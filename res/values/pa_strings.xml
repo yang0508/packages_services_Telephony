@@ -21,4 +21,7 @@
     <string name="national_roaming_enable">Connect to data services when nationally roaming</string>
     <!-- Mobile network settings screen, setting summary text when check box is clear -->
     <string name="national_roaming_disable">Do not connect to data services when nationally roaming</string>
+    <!-- Call UI in background -->
+    <string name="bg_incall">Incoming call in background</string>
+    <string name="bg_incall_summary">Keep incoming call UI in background when screen is on, show notification and play ringtone only</string>
 </resources>
