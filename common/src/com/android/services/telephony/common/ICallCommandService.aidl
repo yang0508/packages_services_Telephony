@@ -117,11 +117,6 @@ interface ICallCommandService {
     void setSystemBarNavigationEnabled(boolean enable);
 
     /**
-     * Add the call's number to the Blacklist and hangs up the call.
-     */
-    void blacklistAndHangup(int callId);
-
-    /**
      * Hangup call with error message / hangup reason
      */
     void hangupWithReason(int callId, String userUri,

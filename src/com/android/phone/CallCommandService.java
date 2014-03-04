@@ -25,7 +25,6 @@ import android.util.Log;
 import com.android.internal.telephony.CallManager;
 import com.android.internal.telephony.MSimConstants;
 import com.android.internal.telephony.PhoneConstants;
-import com.android.internal.telephony.util.BlacklistUtils;
 import com.android.phone.CallModeler.CallResult;
 import com.android.phone.NotificationMgr.StatusBarHelper;
 import com.android.services.telephony.common.Call;
@@ -321,24 +320,6 @@ class CallCommandService extends ICallCommandService.Stub {
             statusBarHelper.enableExpandedView(enable);
         } catch (Exception e) {
             Log.e(TAG, "Error enabling or disabling system bar navigation", e);
-        }
-    }
-
-    @Override
-    public void blacklistAndHangup(int callId) {
-        final CallResult result = mCallModeler.getCallWithId(callId);
-        if (result == null) {
-            return;
-        }
-
-        try {
-            final String phoneNumber = result.getConnection().getAddress();
-            BlacklistUtils.addOrUpdate(mContext, phoneNumber,
-                    BlacklistUtils.BLOCK_CALLS, BlacklistUtils.BLOCK_CALLS);
-            Log.v(TAG, "Hanging up");
-            PhoneUtils.hangup(result.getConnection().getCall());
-        } catch (Exception e) {
-            Log.e(TAG, "Error during blacklistAndHangup().", e);
         }
     }
 
