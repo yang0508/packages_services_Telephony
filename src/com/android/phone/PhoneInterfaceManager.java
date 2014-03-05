@@ -311,6 +311,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 android.provider.Settings.Global.PREFERRED_NETWORK_MODE, networkStatus);
     }
 
+    public void toggleLTE(boolean on) {
+        return;
+    }
+
     private boolean showCallScreenInternal(boolean specifyInitialDialpadState,
                                            boolean showDialpad) {
         if (!PhoneGlobals.sVoiceCapable) {
@@ -901,10 +905,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         return mPhone.getIccCard().hasIccCard();
     }
 
-    public int getLteOnGsmMode() {
-        return mPhone.getLteOnGsmMode();
-    }
-
     /**
      * Return if the current radio is LTE on CDMA. This
      * is a tri-state return value as for a period of time
@@ -915,6 +915,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     public int getLteOnCdmaMode() {
         return mPhone.getLteOnCdmaMode();
+    }
+
+    public int getLteOnGsmMode() {
+        return mPhone.getLteOnGsmMode();
     }
 
     // Gets the retry count during PIN1/PUK1 verification.

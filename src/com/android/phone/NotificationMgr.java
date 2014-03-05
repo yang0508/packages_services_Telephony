@@ -16,6 +16,8 @@
 
 package com.android.phone;
 
+import java.util.ArrayList;
+
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -43,8 +45,11 @@ import android.provider.Settings;
 import android.telephony.PhoneNumberUtils;
 import android.telephony.ServiceState;
 import android.text.BidiFormatter;
+import android.text.SpannableStringBuilder;
 import android.text.TextDirectionHeuristics;
 import android.text.TextUtils;
+import android.text.format.DateUtils;
+import android.text.style.RelativeSizeSpan;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -625,6 +630,25 @@ public class NotificationMgr {
         Notification notification = builder.getNotification();
         configureLedNotification(mContext, MISSED_CALL_NOTIFICATION, notification);
         mNotificationManager.notify(MISSED_CALL_NOTIFICATION, notification);
+    }
+
+    private static final RelativeSizeSpan TIME_SPAN = new RelativeSizeSpan(0.7f);
+
+    private CharSequence formatSingleCallLine(String caller, long date) {
+        int flags = DateUtils.FORMAT_SHOW_TIME;
+        if (!DateUtils.isToday(date)) {
+            flags |= DateUtils.FORMAT_SHOW_WEEKDAY;
+        }
+
+        SpannableStringBuilder lineBuilder = new SpannableStringBuilder();
+        lineBuilder.append(caller);
+        lineBuilder.append("  ");
+
+        int timeIndex = lineBuilder.length();
+        lineBuilder.append(DateUtils.formatDateTime(mContext, date, flags));
+        lineBuilder.setSpan(TIME_SPAN, timeIndex, lineBuilder.length(), 0);
+
+        return lineBuilder;
     }
 
     /** Returns an intent to be invoked when the missed call notification is cleared. */
