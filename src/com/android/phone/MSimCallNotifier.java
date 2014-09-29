@@ -432,9 +432,9 @@ public class MSimCallNotifier extends CallNotifier {
                 stopSignalInfoTone();
             }
             mPreviousCdmaCallState = fgPhone.getForegroundCall().getState();
-	    c = fgPhone.getForegroundCall().getLatestConnection();
+            c = fgPhone.getForegroundCall().getLatestConnection();
         } else {
-	    c = fgPhone.getForegroundCall().getEarliestConnection();
+            c = fgPhone.getForegroundCall().getEarliestConnection();
         }
 
         // Have the PhoneApp recompute its mShowBluetoothIndication
