@@ -1786,7 +1786,7 @@
     <string name="exportAllcontatsNoContacts">No contacts found to export to SIM</string>
     <string name="cursorError">Invalid cursor data</string>
     <!-- Set Subscription screen: set subscription option name -->
-    <string name="set_subscription">Select SIM card</string>
+    <string name="set_subscription">Configure SIM cards</string>
 
     <!-- Set Subscription screen: Message shown in error dialog -->
     <string name="set_subscription_error_atleast_one">Select at least one SIM card</string>
